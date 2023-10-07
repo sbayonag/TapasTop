@@ -14,15 +14,11 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = "username"),
     @UniqueConstraint(columnNames = "email")})
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
 public class User {
 
@@ -62,5 +58,6 @@ public class User {
   private String picturePath;
 
   @OneToMany(mappedBy = "user")
-  private List<Favorite> favorites;
+  private List<Review> reviews;
+
 }

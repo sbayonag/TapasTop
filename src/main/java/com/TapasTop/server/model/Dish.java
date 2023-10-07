@@ -19,6 +19,6 @@ public class Dish {
   private Date createdAt;
 
   @OneToMany(mappedBy = "dish")
-  private List<Favorite> favorites;
+  private List<Review> reviews;
 
 }
