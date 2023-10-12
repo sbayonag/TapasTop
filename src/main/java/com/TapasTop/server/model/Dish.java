@@ -1,14 +1,17 @@
 package com.TapasTop.server.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import lombok.Data;
 
 @Entity
+@Data
 public class Dish {
 
   @Id
@@ -16,9 +19,12 @@ public class Dish {
   private Long id;
 
   @CreationTimestamp
-  private Date createdAt;
+  private LocalDateTime createdAt;
 
-  @OneToMany(mappedBy = "dish")
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = Review_.DISH)
   private List<Review> reviews;
 
+  public void addReview(Review review) {
+    reviews.add(review);
+  }
 }
