@@ -1,0 +1,57 @@
+[
+  {
+    "_class": "com.TapasTop.server.model.User",
+    "username": "sebas",
+    "email": "sebito@email.com",
+    "password": "1234",
+    "name": "sebas",
+    "lastname": "bayona",
+    "bio": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat mas",
+    "picturePath": "/path/to/picture",
+    "birthday": "2000-01-01"
+  },
+  {
+    "_class": "com.TapasTop.server.model.User",
+    "username": "diego",
+    "email": "diego@email.com",
+    "password": "1234",
+    "name": "diego",
+    "lastname": "torrelles",
+    "bio": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat mas",
+    "picturePath": "/path/to/picture",
+    "birthday": "2000-01-02"
+  },
+  {
+    "_class": "com.TapasTop.server.model.User",
+    "username": "gonza",
+    "email": "gonza@email.com",
+    "password": "1234",
+    "name": "gonzalo",
+    "lastname": "de la roza",
+    "bio": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat mas",
+    "picturePath": "/path/to/picture",
+    "birthday": "2000-01-03"
+  },
+  {
+    "_class": "com.TapasTop.server.model.User",
+    "username": "dani",
+    "email": "dani@email.com",
+    "password": "1234",
+    "name": "daniel",
+    "lastname": "milbradt",
+    "bio": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat mas",
+    "picturePath": "/path/to/picture",
+    "birthday": "2000-01-04"
+  },
+  {
+    "_class": "com.TapasTop.server.model.User",
+    "username": "adri",
+    "email": "adri@email.com",
+    "password": "1234",
+    "name": "adrian",
+    "lastname": "retes",
+    "bio": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat mas",
+    "picturePath": "/path/to/picture",
+    "birthday": "2000-01-05"
+  }
+]
