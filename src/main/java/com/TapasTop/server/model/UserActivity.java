@@ -1,5 +1,8 @@
 package com.TapasTop.server.model;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public class UserActivity {
@@ -15,7 +18,8 @@ public class UserActivity {
   @JsonValue
   UserActivityEnum activityEnum;
 
-  public UserActivity(Long activity) {
+  public UserActivity(List<Review> reviews) {
+    Long activity = reviewsWithin30Days(reviews);
     if (activity < UPPER_LIMIT_LOW)
       this.activityEnum = UserActivityEnum.LOW;
     else if (activity < UPPER_LIMIT_ACTIVE)
@@ -26,4 +30,10 @@ public class UserActivity {
       this.activityEnum = UserActivityEnum.TAPEADOR;
   }
 
+  private Long reviewsWithin30Days(List<Review> reviews) {
+    return reviews.stream()
+        .filter(
+            review -> Duration.between(review.getCreatedAt(), LocalDateTime.now()).toDays() <= 30)
+        .count();
+  }
 }

@@ -21,6 +21,8 @@ public interface UserView {
   Date birthday();
 
   String getPicturePath();
-  
+
   UserActivity getUserActivity();
+
+  Integer getReviewCount();
 }

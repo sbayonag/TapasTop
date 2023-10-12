@@ -1,6 +1,5 @@
 package com.TapasTop.server.model;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -65,6 +64,9 @@ public class User {
 
   @Transient
   UserActivity userActivity;
+
+  @Transient
+  Integer reviewCount;
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = Review_.USER)
   private List<Review> reviews;
@@ -157,6 +159,15 @@ public class User {
     this.userActivity = userActivity;
   }
 
+
+  public Integer getReviewCount() {
+    return reviewCount;
+  }
+
+  public void setReviewCount(Integer reviewCount) {
+    this.reviewCount = reviewCount;
+  }
+
   public List<Review> getReviews() {
     return reviews;
   }
@@ -181,19 +192,8 @@ public class User {
 
   @PostLoad
   private void postLoad() {
-    this.userActivity = measureUserActivity();
-  }
-
-  private UserActivity measureUserActivity() {
-    Long reviewsWithin30Days = reviewsWithin30Days();
-    return new UserActivity(reviewsWithin30Days);
-  }
-
-  private Long reviewsWithin30Days() {
-    return reviews.stream()
-        .filter(
-            review -> Duration.between(review.getCreatedAt(), LocalDateTime.now()).toDays() <= 30)
-        .count();
+    this.userActivity = new UserActivity(reviews);
+    this.reviewCount = reviews.size();
   }
 
 }
