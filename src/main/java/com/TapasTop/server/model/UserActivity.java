@@ -20,7 +20,7 @@ public class UserActivity {
   UserActivityEnum activityEnum;
 
   public UserActivity(List<Review> reviews) {
-    Long activity = reviewsWithin30Days(reviews);
+    Long activity = reviewCountWithinPeriod(reviews);
     if (activity < UPPER_LIMIT_LOW)
       this.activityEnum = UserActivityEnum.INACTIVE;
     else if (activity < UPPER_LIMIT_ACTIVE)
@@ -31,7 +31,7 @@ public class UserActivity {
       this.activityEnum = UserActivityEnum.TAPEADOR;
   }
 
-  private Long reviewsWithin30Days(List<Review> reviews) {
+  private Long reviewCountWithinPeriod(List<Review> reviews) {
     return reviews.stream().filter(review -> Duration
         .between(review.getCreatedAt(), LocalDateTime.now()).toDays() <= ACTIVITY_PERIOD_IN_DAYS)
         .count();
