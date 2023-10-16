@@ -12,6 +12,6 @@ import com.TapasTop.server.model.UserView;
 @RepositoryRestResource(excerptProjection = UserView.class)
 @CrossOrigin(origins = "http://localhost:8081", maxAge = 3600, allowCredentials = "true")
 public interface UserRepository extends JpaRepository<User, Long> {
-  
+
   Page<User> findByUsernameStartingWith(@Param("prefix") String prefix, Pageable pageable);
 }

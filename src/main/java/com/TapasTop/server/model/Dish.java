@@ -3,8 +3,10 @@ package com.TapasTop.server.model;
 import java.time.LocalDateTime;
 import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -21,7 +23,8 @@ public class Dish {
   @CreationTimestamp
   private LocalDateTime createdAt;
 
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = Review_.DISH)
+  @JsonManagedReference("DishReference")
+  @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = Review_.DISH)
   private List<Review> reviews;
 
   public void addReview(Review review) {

@@ -1,6 +1,7 @@
 package com.TapasTop.server.model;
 
 import java.util.Date;
+import java.util.List;
 import org.springframework.data.rest.core.config.Projection;
 
 @Projection(types = {User.class}, name = "UserView")
@@ -25,4 +26,6 @@ public interface UserView {
   UserActivity getUserActivity();
 
   Integer getReviewCount();
+
+  List<Review> getReviews();
 }

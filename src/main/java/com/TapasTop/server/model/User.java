@@ -5,12 +5,14 @@ import java.time.LocalDateTime;
 import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.NaturalId;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -68,7 +70,8 @@ public class User {
   @Transient
   Integer reviewCount;
 
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = Review_.USER)
+  @JsonManagedReference("UserReference")
+  @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = Review_.USER)
   private List<Review> reviews;
 
   public Long getId() {

@@ -2,8 +2,8 @@ package com.TapasTop.server.model;
 
 import java.time.LocalDateTime;
 import org.hibernate.annotations.CreationTimestamp;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
@@ -38,11 +38,13 @@ public class Review {
   @CreationTimestamp
   private LocalDateTime createdAt;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @JsonBackReference("UserReference")
+  @ManyToOne
   @MapsId(User_.ID)
   private User user;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @JsonBackReference("DishReference")
+  @ManyToOne
   @MapsId(Dish_.ID)
   private Dish dish;
 
