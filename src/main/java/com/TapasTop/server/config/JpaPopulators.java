@@ -13,8 +13,8 @@ public class JpaPopulators {
     public Jackson2RepositoryPopulatorFactoryBean getRespositoryPopulator() throws Exception {
         Jackson2RepositoryPopulatorFactoryBean factory =
                 new Jackson2RepositoryPopulatorFactoryBean();
-        factory.setResources(new Resource[] {new ClassPathResource("user-data.json"),
-                new ClassPathResource("dish-data.json")});
+        factory.setResources(new Resource[] {new ClassPathResource("01-user-data.json"),
+                new ClassPathResource("02-dish-data.json")});
         return factory;
     }
 }
