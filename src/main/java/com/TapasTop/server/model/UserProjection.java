@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.rest.core.config.Projection;
 
 @Projection(types = {User.class}, name = "UserView")
-public interface UserView {
+public interface UserProjection {
 
   String getUsername();
 
@@ -28,5 +28,5 @@ public interface UserView {
   Integer getReviewCount();
 
   List<Review> getReviews();
-  
+
 }
