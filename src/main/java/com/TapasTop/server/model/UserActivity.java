@@ -19,7 +19,7 @@ public class UserActivity {
   @JsonValue
   UserActivityEnum activityEnum;
 
-  public UserActivity(List<Review> reviews) {
+  public void setUserActivityEnumByReviewCount(List<Review> reviews) {
     Long activity = reviewCountWithinPeriod(reviews);
     if (activity < UPPER_LIMIT_LOW)
       this.activityEnum = UserActivityEnum.INACTIVE;
@@ -31,9 +31,14 @@ public class UserActivity {
       this.activityEnum = UserActivityEnum.TAPEADOR;
   }
 
+  public UserActivity() {
+    this.activityEnum = UserActivityEnum.INACTIVE;
+  }
+
   private Long reviewCountWithinPeriod(List<Review> reviews) {
     return reviews.stream().filter(review -> Duration
         .between(review.getCreatedAt(), LocalDateTime.now()).toDays() <= ACTIVITY_PERIOD_IN_DAYS)
         .count();
   }
+
 }

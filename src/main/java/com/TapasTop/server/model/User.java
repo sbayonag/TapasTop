@@ -5,11 +5,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.NaturalId;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -58,19 +53,16 @@ public class User {
   private String bio;
 
   @Past
-  @JsonDeserialize(using = LocalDateDeserializer.class)
-  @JsonSerialize(using = LocalDateSerializer.class)
   private LocalDate birthday;
 
   private String picturePath;
 
   @Transient
-  UserActivity userActivity;
+  UserActivity userActivity = new UserActivity();
 
   @Transient
-  Integer reviewCount;
+  Integer reviewCount = 0;
 
-  @JsonManagedReference("UserReference")
   @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = Review_.USER)
   private List<Review> reviews;
 
@@ -195,7 +187,7 @@ public class User {
 
   @PostLoad
   private void postLoad() {
-    this.userActivity = new UserActivity(reviews);
+    userActivity.setUserActivityEnumByReviewCount(reviews);
     this.reviewCount = reviews.size();
   }
 
