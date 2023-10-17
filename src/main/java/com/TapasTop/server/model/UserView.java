@@ -28,4 +28,5 @@ public interface UserView {
   Integer getReviewCount();
 
   List<Review> getReviews();
+  
 }
