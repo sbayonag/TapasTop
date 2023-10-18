@@ -1,5 +1,6 @@
 {
   "java.configuration.updateBuildConfiguration": "automatic",
   "java.compile.nullAnalysis.mode": "automatic",
-  "maven.view": "hierarchical"
+  "maven.view": "hierarchical",
+  "java.format.settings.url": "eclipse-java-google-style.xml"
 }
