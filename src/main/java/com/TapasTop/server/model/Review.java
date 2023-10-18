@@ -11,16 +11,14 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
 
 @Entity
-@Data
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "dish_id"}))
 public class Review {
 
   @Id
   @GeneratedValue
-  private Long id;
+  Long id;
 
   @NotNull
   @Max(10)
@@ -42,5 +40,45 @@ public class Review {
   @ManyToOne
   @MapsId(Dish_.ID)
   private Dish dish;
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public Integer getRate() {
+    return rate;
+  }
+
+  public void setRate(Integer rate) {
+    this.rate = rate;
+  }
+
+  public LocalDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(LocalDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
+  }
+
+  public Dish getDish() {
+    return dish;
+  }
+
+  public void setDish(Dish dish) {
+    this.dish = dish;
+  }
 
 }
