@@ -52,6 +52,7 @@ publishing {
 tasks.withType<JavaCompile>() { 
     options.encoding = "UTF-8"
     options.compilerArgs.add("--enable-preview")
+    options.compilerArgs.add("-Xlint:preview")
 }
 
 tasks.withType<Javadoc>() {
