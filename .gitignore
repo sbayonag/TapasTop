@@ -19,3 +19,4 @@ src/main/resources/application.properties
 ### Gradle ###
 .gradle
 /build/
+/bin/
