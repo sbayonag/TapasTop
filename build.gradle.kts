@@ -35,6 +35,7 @@ dependencies {
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client:3.2.0")
     testImplementation("org.springframework.boot:spring-boot-starter-test:3.1.4")
     compileOnly("org.hibernate.orm:hibernate-jpamodelgen:6.3.1.Final")
+    annotationProcessor("org.hibernate:hibernate-jpamodelgen:6.3.1.Final")
 }
 
 group = "com.TapasTop"
