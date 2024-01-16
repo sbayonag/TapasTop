@@ -3,8 +3,9 @@
  */
 
 plugins {
-    `java-library`
-    `maven-publish`
+    id("java-library")
+    id("maven-publish")
+    id("eclipse")
 }
 
 java {
@@ -49,12 +50,17 @@ publishing {
     }
 }
 
-tasks.withType<JavaCompile>() {
+tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
     options.compilerArgs.add("--enable-preview")
     options.compilerArgs.add("-Xlint:preview")
 }
 
-tasks.withType<Javadoc>() {
+tasks.withType<Javadoc> {
     options.encoding = "UTF-8"
+}
+
+eclipse.jdt.file.withProperties {
+    setProperty("org.eclipse.jdt.core.compiler.problem.enablePreviewFeatures", "enabled")
+    setProperty("org.eclipse.jdt.core.compiler.problem.reportPreviewFeatures", "ignore")
 }
