@@ -1,15 +1,17 @@
 package com.TapasTop.server.repository;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import java.util.List;
+import com.TapasTop.server.model.Dish;
+import com.TapasTop.server.model.Review;
+import com.TapasTop.server.model.User;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import com.TapasTop.server.model.Dish;
-import com.TapasTop.server.model.Review;
-import com.TapasTop.server.model.User;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 public class UserRepositoryIntegrationTest {

@@ -1,9 +1,10 @@
 package com.TapasTop.server.model;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
-import com.fasterxml.jackson.annotation.JsonValue;
 
 public class UserActivity {
 
@@ -12,9 +13,11 @@ public class UserActivity {
   public static final Long UPPER_LIMIT_LOW = 1L;
   public static final Long ACTIVITY_PERIOD_IN_DAYS = 30L;
 
+
   public enum UserActivityEnum {
     INACTIVE, ACTIVE, VERY_ACTIVE, TAPEADOR;
   }
+
 
   @JsonValue
   UserActivityEnum activityEnum;
@@ -36,9 +39,9 @@ public class UserActivity {
   }
 
   private Long reviewCountWithinPeriod(List<Review> reviews) {
-    return reviews.stream().filter(review -> Duration
-        .between(review.getCreatedAt(), LocalDateTime.now()).toDays() <= ACTIVITY_PERIOD_IN_DAYS)
-        .count();
+    return reviews.stream().filter(
+        review -> Duration.between(review.getCreatedAt(), LocalDateTime.now())
+            .toDays() <= ACTIVITY_PERIOD_IN_DAYS).count();
   }
 
 }

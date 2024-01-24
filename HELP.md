@@ -1,6 +1,7 @@
 # Getting Started
 
 ### Reference Documentation
+
 For further reference, please consider the following sections:
 
 * [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
@@ -14,6 +15,7 @@ For further reference, please consider the following sections:
 * [Spring HATEOAS](https://docs.spring.io/spring-boot/docs/3.1.4/reference/htmlsingle/index.html#web.spring-hateoas)
 
 ### Guides
+
 The following guides illustrate how to use some features concretely:
 
 * [Accessing JPA Data with REST](https://spring.io/guides/gs/accessing-data-rest/)

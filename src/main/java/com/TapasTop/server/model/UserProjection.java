@@ -1,8 +1,9 @@
 package com.TapasTop.server.model;
 
+import org.springframework.data.rest.core.config.Projection;
+
 import java.util.Date;
 import java.util.List;
-import org.springframework.data.rest.core.config.Projection;
 
 @Projection(types = {User.class}, name = "UserView")
 public interface UserProjection {
