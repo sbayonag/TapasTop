@@ -1,5 +1,7 @@
-package com.TapasTop.server.resource;
+package com.TapasTop.server.controller;
 
+import com.TapasTop.server.exception.DishNotFoundException;
+import com.TapasTop.server.exception.UserNotFoundException;
 import com.TapasTop.server.model.Dish;
 import com.TapasTop.server.model.Review;
 import com.TapasTop.server.model.User;

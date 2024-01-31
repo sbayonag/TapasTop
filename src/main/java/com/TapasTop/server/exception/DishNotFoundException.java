@@ -1,4 +1,4 @@
-package com.TapasTop.server.resource;
+package com.TapasTop.server.exception;
 
 public class DishNotFoundException extends Exception {
 

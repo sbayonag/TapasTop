@@ -1,4 +1,4 @@
-package com.TapasTop.server.resource;
+package com.TapasTop.server.controller;
 
 import org.springframework.data.rest.webmvc.BasePathAwareController;
 import org.springframework.http.ResponseEntity;
