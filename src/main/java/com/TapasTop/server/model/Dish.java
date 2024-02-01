@@ -1,14 +1,17 @@
 package com.TapasTop.server.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Entity
 @Data
+@NoArgsConstructor
+@Entity
 public class Dish {
 
   @Id
@@ -18,11 +21,10 @@ public class Dish {
   @CreationTimestamp
   private LocalDateTime createdAt;
 
-  @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = Review_.DISH)
-  private List<Review> reviews;
+  @NotBlank
+  String name;
 
-  public void addReview(Review review) {
-    reviews.add(review);
-  }
+  @OneToMany(mappedBy = Review_.DISH, cascade = CascadeType.ALL, orphanRemoval = true)
+  private List<Review> reviews;
 
 }

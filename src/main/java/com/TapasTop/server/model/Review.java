@@ -2,13 +2,19 @@ package com.TapasTop.server.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
-@Entity
+@Data
+@NoArgsConstructor
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "dish_id"}))
+@Entity
 public class Review {
 
   @Id
@@ -17,62 +23,27 @@ public class Review {
 
   @NotNull
   @Max(10)
-  private Integer rate;
+  @Min(0)
+  private int rate;
 
-  public Review(Integer rate, User user, Dish dish) {
-    this.rate = rate;
-    this.user = user;
-    this.dish = dish;
-  }
+  @Size(max = 280)
+  private String comment;
 
   @CreationTimestamp
   private LocalDateTime createdAt;
 
-  @ManyToOne
-  @MapsId(User_.ID)
-  private User user;
-
-  @ManyToOne
-  @MapsId(Dish_.ID)
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "dish_id")
   private Dish dish;
 
-  public Long getId() {
-    return id;
-  }
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "user_id")
+  private User user;
 
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public Integer getRate() {
-    return rate;
-  }
-
-  public void setRate(Integer rate) {
+  public Review(Integer rate, String comment, User user, Dish dish) {
     this.rate = rate;
-  }
-
-  public LocalDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-  public void setCreatedAt(LocalDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
-
-  public User getUser() {
-    return user;
-  }
-
-  public void setUser(User user) {
+    this.comment = comment;
     this.user = user;
-  }
-
-  public Dish getDish() {
-    return dish;
-  }
-
-  public void setDish(Dish dish) {
     this.dish = dish;
   }
 

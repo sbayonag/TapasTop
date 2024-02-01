@@ -1,10 +1,9 @@
 package com.TapasTop.server.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Past;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.NaturalId;
 
@@ -12,8 +11,16 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Data
+@NoArgsConstructor
 @Entity
 public class User {
+
+  @Transient
+  UserActivity userActivity = new UserActivity();
+
+  @Transient
+  Integer reviewCount;
 
   @Id
   @GeneratedValue
@@ -23,16 +30,18 @@ public class User {
   private LocalDateTime createdAt;
 
   @NotBlank
-  @NaturalId
+  @NotNull
   @Size(max = 27)
+  @NaturalId
   private String username;
 
-  @NotBlank
   @Email
-  @NaturalId
+  @Column(unique = true)
+  @NotNull
   private String email;
 
   @NotBlank
+  @NotNull
   private String password;
 
   @NotBlank
@@ -51,119 +60,8 @@ public class User {
 
   private String picturePath;
 
-  @Transient
-  UserActivity userActivity = new UserActivity();
-
-  @Transient
-  Integer reviewCount = 0;
-
-  @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = Review_.USER)
+  @OneToMany(mappedBy = Review_.USER, cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Review> reviews;
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public LocalDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-  public void setCreatedAt(LocalDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
-
-  public String getUsername() {
-    return username;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public String getLastname() {
-    return lastname;
-  }
-
-  public void setLastname(String lastname) {
-    this.lastname = lastname;
-  }
-
-  public String getBio() {
-    return bio;
-  }
-
-  public void setBio(String bio) {
-    this.bio = bio;
-  }
-
-  public LocalDate getBirthday() {
-    return birthday;
-  }
-
-  public void setBirthday(LocalDate birthday) {
-    this.birthday = birthday;
-  }
-
-  public String getPicturePath() {
-    return picturePath;
-  }
-
-  public void setPicturePath(String picturePath) {
-    this.picturePath = picturePath;
-  }
-
-  public UserActivity getUserActivity() {
-    return userActivity;
-  }
-
-  public void setUserActivity(UserActivity userActivity) {
-    this.userActivity = userActivity;
-  }
-
-
-  public Integer getReviewCount() {
-    return reviewCount;
-  }
-
-  public void setReviewCount(Integer reviewCount) {
-    this.reviewCount = reviewCount;
-  }
-
-  public List<Review> getReviews() {
-    return reviews;
-  }
-
-  public void setReviews(List<Review> reviews) {
-    this.reviews = reviews;
-  }
 
   @Override
   public int hashCode() {
@@ -173,10 +71,6 @@ public class User {
   @Override
   public boolean equals(Object obj) {
     return obj instanceof User && ((User) obj).id.equals(id);
-  }
-
-  public void addReview(Review review) {
-    reviews.add(review);
   }
 
   @PostLoad
