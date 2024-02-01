@@ -17,9 +17,6 @@ import java.util.List;
 public class User {
 
   @Transient
-  UserActivity userActivity = new UserActivity();
-
-  @Transient
   Integer reviewCount;
 
   @Id
@@ -63,6 +60,10 @@ public class User {
   @OneToMany(mappedBy = Review_.USER, cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Review> reviews;
 
+  public UserActivity getUserActivity() {
+    return new UserActivity(reviews);
+  }
+
   @Override
   public int hashCode() {
     return username.hashCode();
@@ -71,12 +72,6 @@ public class User {
   @Override
   public boolean equals(Object obj) {
     return obj instanceof User && ((User) obj).id.equals(id);
-  }
-
-  @PostLoad
-  private void postLoad() {
-    userActivity.setUserActivityEnumByReviewCount(reviews);
-    this.reviewCount = reviews.size();
   }
 
 }

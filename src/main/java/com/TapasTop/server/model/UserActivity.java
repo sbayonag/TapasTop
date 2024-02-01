@@ -12,23 +12,24 @@ public class UserActivity {
   public static final Long UPPER_LIMIT_ACTIVE = 4L;
   public static final Long UPPER_LIMIT_LOW = 1L;
   public static final Long ACTIVITY_PERIOD_IN_DAYS = 30L;
+  
   @JsonValue
   UserActivityEnum activityEnum;
 
-  public UserActivity() {
-    this.activityEnum = UserActivityEnum.INACTIVE;
+  public UserActivity(List<Review> reviews) {
+    this.activityEnum = getUserActivityEnumByReviews(reviews);
   }
 
-  public void setUserActivityEnumByReviewCount(List<Review> reviews) {
+  public UserActivityEnum getUserActivityEnumByReviews(List<Review> reviews) {
     Long activity = reviewCountWithinPeriod(reviews);
     if (activity < UPPER_LIMIT_LOW)
-      this.activityEnum = UserActivityEnum.INACTIVE;
+      return UserActivityEnum.INACTIVE;
     else if (activity < UPPER_LIMIT_ACTIVE)
-      this.activityEnum = UserActivityEnum.ACTIVE;
+      return UserActivityEnum.ACTIVE;
     else if (activity < UPPER_LIMIT_VERY_ACTIVE)
-      this.activityEnum = UserActivityEnum.VERY_ACTIVE;
+      return UserActivityEnum.VERY_ACTIVE;
     else
-      this.activityEnum = UserActivityEnum.TAPEADOR;
+      return UserActivityEnum.TAPEADOR;
   }
 
   private Long reviewCountWithinPeriod(List<Review> reviews) {
