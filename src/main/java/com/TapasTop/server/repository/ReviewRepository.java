@@ -6,9 +6,9 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@RepositoryRestResource()
+@RepositoryRestResource
 @CrossOrigin(origins = "http://localhost:8081", maxAge = 3600, allowCredentials = "true",
-    methods = RequestMethod.GET)
+        methods = {RequestMethod.GET, RequestMethod.POST})
 public interface ReviewRepository extends JpaRepository<Review, Long> {
 
 }
