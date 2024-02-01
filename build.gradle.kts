@@ -7,6 +7,7 @@ plugins {
     id("java-library")
     id("maven-publish")
     id("eclipse")
+    id("io.freefair.lombok") version "8.4"
     id("org.springframework.boot") version "3.2.2"
 }
 
