@@ -1,20 +1,26 @@
 [
   {
-    "_class": "com.TapasTop.server.model.Dish"
+    "_class": "com.TapasTop.server.model.Dish",
+    "name": "Dish1"
   },
   {
-    "_class": "com.TapasTop.server.model.Dish"
+    "_class": "com.TapasTop.server.model.Dish",
+    "name": "Dish2"
   },
   {
-    "_class": "com.TapasTop.server.model.Dish"
+    "_class": "com.TapasTop.server.model.Dish",
+    "name": "Dish3"
   },
   {
-    "_class": "com.TapasTop.server.model.Dish"
+    "_class": "com.TapasTop.server.model.Dish",
+    "name": "Dish4"
   },
   {
-    "_class": "com.TapasTop.server.model.Dish"
+    "_class": "com.TapasTop.server.model.Dish",
+    "name": "Dish5"
   },
   {
-    "_class": "com.TapasTop.server.model.Dish"
+    "_class": "com.TapasTop.server.model.Dish",
+    "name": "Dish6"
   }
 ]
