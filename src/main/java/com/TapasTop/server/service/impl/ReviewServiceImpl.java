@@ -1,11 +1,9 @@
 package com.TapasTop.server.service.impl;
 
-import com.TapasTop.server.controller.ReviewForm;
-import com.TapasTop.server.model.Review;
+import com.TapasTop.server.service.ReviewService;
+import org.springframework.stereotype.Service;
 
-public class ReviewService implements com.TapasTop.server.service.ReviewService {
-  @Override
-  public Review createReview(ReviewForm reviewForm) {
-    return null;
-  }
+@Service
+public class ReviewServiceImpl implements ReviewService {
+
 }
