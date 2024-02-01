@@ -13,6 +13,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin(origins = "http://localhost:8081", maxAge = 3600, allowCredentials = "true")
 public interface UserRepository extends JpaRepository<User, Long> {
 
-  Page<User> findUsersByUsernameStartingWith(@Param("prefix") String prefix, Pageable pageable);
+  Page<User> findByUsernameStartingWith(@Param("prefix") String prefix, Pageable pageable);
 
 }
