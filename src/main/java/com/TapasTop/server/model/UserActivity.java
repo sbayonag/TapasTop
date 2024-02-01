@@ -12,7 +12,7 @@ public class UserActivity {
   public static final Long UPPER_LIMIT_ACTIVE = 4L;
   public static final Long UPPER_LIMIT_LOW = 1L;
   public static final Long ACTIVITY_PERIOD_IN_DAYS = 30L;
-  
+
   @JsonValue
   UserActivityEnum activityEnum;
 
@@ -33,9 +33,9 @@ public class UserActivity {
   }
 
   private Long reviewCountWithinPeriod(List<Review> reviews) {
-    return reviews.stream().filter(
-        review -> Duration.between(review.getCreatedAt(), LocalDateTime.now())
-            .toDays() <= ACTIVITY_PERIOD_IN_DAYS).count();
+    return reviews.stream().filter(review -> Duration
+        .between(review.getCreatedAt(), LocalDateTime.now()).toDays() <= ACTIVITY_PERIOD_IN_DAYS)
+        .count();
   }
 
   public enum UserActivityEnum {

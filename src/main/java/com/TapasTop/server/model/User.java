@@ -16,9 +16,6 @@ import java.util.List;
 @Entity
 public class User {
 
-  @Transient
-  Integer reviewCount;
-
   @Id
   @GeneratedValue
   private Long id;

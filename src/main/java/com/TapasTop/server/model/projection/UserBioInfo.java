@@ -1,10 +1,12 @@
-package com.TapasTop.server.model;
+package com.TapasTop.server.model.projection;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.rest.core.config.Projection;
+import com.TapasTop.server.model.User;
+import com.TapasTop.server.model.UserActivity;
 
-@Projection(types = {User.class}, name = "UserView")
-public interface UserProjection {
+@Projection(types = {User.class}, name = "UserBioInfo")
+public interface UserBioInfo {
 
   String getUsername();
 
@@ -15,6 +17,8 @@ public interface UserProjection {
   String getLastname();
 
   String getPicturePath();
+
+  String getBio();
 
   UserActivity getUserActivity();
 
